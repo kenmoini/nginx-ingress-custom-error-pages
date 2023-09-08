@@ -1,5 +1,8 @@
 name: Build Container & Push to Quay
 on:
+  schedule:
+    # Weekly on monday
+    - cron: "0 0 * * 1"
   push:
     branches:
       - main
