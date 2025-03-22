@@ -26,13 +26,19 @@ jobs:
         uses: docker/setup-qemu-action@v3
         with:
           platforms: arm64,amd64
+        env:
+          CONTAINERD_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE: 1
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        env:
+          CONTAINERD_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE: 1
   
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
+        env:
+          CONTAINERD_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE: 1
         with:
           # list of Docker images to use as base name for tags
           images: |
@@ -54,6 +60,8 @@ jobs:
   
       - name: Build and push
         uses: docker/build-push-action@v6
+        env:
+          CONTAINERD_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE: 1
         with:
           context: .
           push: true
