@@ -21,6 +21,10 @@ jobs:
 
       - name: Check out code
         uses: actions/checkout@v4
+
+      - name: Set env variables
+        run: |
+          echo "CONTAINERD_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE=1" >> $GITHUB_ENV
   
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
